@@ -1,40 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    | ### `ocr.bbox.xsl`
+    |
+    | * [source](__CURFILE__)
+    |
+    | Retrieve the bounding box of an element
+    |
+    -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
     xmlns:ocr="http://github.com/kba/ocr-fileformat/xmlns"
     exclude-result-prefixes="#all"
-    version="2.0"
     xpath-default-namespace="http://www.w3.org/1999/xhtml"
-    xmlns="http://www.tei-c.org/ns/1.0">
+    xmlns="http://www.tei-c.org/ns/1.0"
+    version="2.0">
 
     <!--
-        | ### ocr:get_bbox($element, $format, $coord)
+        |
+        | #### `ocr:bbox($format, $element, $coord)`
+        |
+        | * `$format`: A valid [OCR format](#ocr-formats)
         | * `$element`: The element to bound
-        | * `$format`: One of `hocr` or `alto`
-        | * `$coord`: One of `left`, `right`, `top`, `bottom`, `width`, `height`
+        | * `$coord`: A valid [box coordinate](#box-coordinates)
+        |
         -->
-    <xsl:function name="ocr:get_bbox" as="xs:integer">
-        <xsl:param name="elem" as="item()"/>
+    <xsl:function name="ocr:bbox" as="xs:integer">
         <xsl:param name="format" as="xs:string"/>
+        <xsl:param name="elem" as="item()"/>
         <xsl:param name="coord" as="xs:string"/>
         <xsl:choose>
-            <xsl:when test="$format = 'hocr'"><xsl:value-of select="ocr:get_hocr_bbox($elem, $coord)"/></xsl:when>
-            <xsl:when test="$format = 'alto'"><xsl:value-of select="ocr:get_alto_bbox($elem, $coord)"/></xsl:when>
+            <xsl:when test="$format = 'hocr'"><xsl:value-of select="ocr:hocr-bbox($elem, $coord)"/></xsl:when>
+            <xsl:when test="$format = 'alto'"><xsl:value-of select="ocr:alto-bbox($elem, $coord)"/></xsl:when>
         </xsl:choose>
     </xsl:function>
 
     <!--
-        | ### ocr:get_hocr_bbox($element, $coord)
+        |
+        | #### `ocr:hocr-bbox($element, $coord)`
+        | 
         | * `$element`: The element to bound
-        | * `$coord`: One of `left`, `right`, `top`, `bottom`, `width`, `height`
+        | * `$coord`: A valid [box coordinate](#box-coordinates)
+        |
         -->
-    <xsl:function name="ocr:get_hocr_bbox" as="xs:integer">
+    <xsl:function name="ocr:hocr-bbox" as="xs:integer">
         <xsl:param name="elem" as="item()"/>
         <xsl:param name="coord" as="xs:string"/>
         <xsl:variable name="preStrip" select="replace(normalize-space($elem/@title), '^.*bbox ', '')"/>
         <xsl:variable name="postStrip" select="replace($preStrip, ';.*', '')"/>
-        <!-- <xsl:variable name="positions" select="ocr:get_hocr_bbox($elem)" /> -->
+        <!-- <xsl:variable name="positions" select="ocr:hocr-bbox($elem)" /> -->
         <xsl:variable name="positions" select="for $x in tokenize($postStrip, '\s+') return xs:integer($x)"/>
         <!-- <xsl:message> -->
         <!--     <xsl:value-of select="$coord"/> -->
@@ -51,11 +65,14 @@
     </xsl:function>
 
     <!--
-        | ### ocr:get_alto_bbox($slement, $coord)
+        |
+        | #### `ocr:alto-bbox($slement, $coord)`
+        |
         | * `$element`: The element to bound
-        | * `$coord`: One of `left`, `right`, `top`, `bottom`, `width`, `height`
+        | * `$coord`: A valid [box coordinate](#box-coordinates)
+        |
         -->
-    <xsl:function name="ocr:get_alto_bbox" as="xs:integer">
+    <xsl:function name="ocr:alto-bbox" as="xs:integer">
         <xsl:param name="elem"/>
         <xsl:param name="coord" as="xs:string"/>
         <xsl:choose>

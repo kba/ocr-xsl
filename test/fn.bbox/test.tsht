@@ -1,0 +1,6 @@
+#!/usr/bin/env tsht
+
+use shxml
+use colordiff
+
+equals_file "$(shxml xslt transform.xsl hocr.xml)" expected "fn.bbox hocr"
