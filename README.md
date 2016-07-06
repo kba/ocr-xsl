@@ -1,6 +1,8 @@
 # ocr-xsl
 XSLT functions to transform common OCR formats
 
+[![Build Status](https://travis-ci.org/kba/ocr-xsl.svg?branch=master)](https://travis-ci.org/kba/ocr-xsl)
+
 <!-- BEGIN-MARKDOWN-TOC -->
 * [Shared concepts](#shared-concepts)
 	* [OCR formats](#ocr-formats)
