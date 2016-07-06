@@ -32,6 +32,7 @@
         <xsl:choose>
             <xsl:when test="$format = 'hocr'"><xsl:value-of select="ocr:hocr-bbox($elem, $coord)"/></xsl:when>
             <xsl:when test="$format = 'alto'"><xsl:value-of select="ocr:alto-bbox($elem, $coord)"/></xsl:when>
+            <xsl:when test="$format = 'abbyy'"><xsl:value-of select="ocr:abbyy-bbox($elem, $coord)"/></xsl:when>
         </xsl:choose>
     </xsl:function>
 
@@ -66,6 +67,28 @@
 
     <!--
         |
+        | #### `ocr:abbyy-bbox($slement, $coord)`
+        |
+        | * `$element`: The element to bound
+        | * `$coord`: A valid [box coordinate](#box-coordinates)
+        |
+        -->
+    <xsl:function name="ocr:abbyy-bbox" as="xs:integer">
+        <xsl:param name="elem"/>
+        <xsl:param name="coord" as="xs:string"/>
+        <xsl:choose>
+            <xsl:when test="$coord = 'left'"  ><xsl:value-of select="$elem/@l"            /></xsl:when>
+            <xsl:when test="$coord = 'top'"   ><xsl:value-of select="$elem/@t"            /></xsl:when>
+            <xsl:when test="$coord = 'right'" ><xsl:value-of select="$elem/@r"            /></xsl:when>
+            <xsl:when test="$coord = 'bottom'"><xsl:value-of select="$elem/@b"            /></xsl:when>
+            <xsl:when test="$coord = 'width'" ><xsl:value-of select="$elem/@r - $elem/@l" /></xsl:when>
+            <xsl:when test="$coord = 'height'"><xsl:value-of select="$elem/@b - $elem/@t" /></xsl:when>
+        </xsl:choose>
+    </xsl:function>
+
+
+    <!--
+        |
         | #### `ocr:alto-bbox($slement, $coord)`
         |
         | * `$element`: The element to bound
@@ -78,8 +101,8 @@
         <xsl:choose>
             <xsl:when test="$coord = 'left'"  ><xsl:value-of select="$elem/@HPOS"                 /></xsl:when>
             <xsl:when test="$coord = 'top'"   ><xsl:value-of select="$elem/@VPOS"                 /></xsl:when>
-            <xsl:when test="$coord = 'right'" ><xsl:value-of select="$elem/@WIDTH - $elem/@HPOS"  /></xsl:when>
-            <xsl:when test="$coord = 'bottom'"><xsl:value-of select="$elem/@HEIGHT - $elem/@VPOS" /></xsl:when>
+            <xsl:when test="$coord = 'right'" ><xsl:value-of select="$elem/@WIDTH + $elem/@HPOS"  /></xsl:when>
+            <xsl:when test="$coord = 'bottom'"><xsl:value-of select="$elem/@HEIGHT + $elem/@VPOS" /></xsl:when>
             <xsl:when test="$coord = 'width'" ><xsl:value-of select="$elem/@WIDTH"                /></xsl:when>
             <xsl:when test="$coord = 'height'"><xsl:value-of select="$elem/@HEIGHT"               /></xsl:when>
         </xsl:choose>

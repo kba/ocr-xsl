@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <document xmlns="http://www.abbyy.com/FineReader_xml/FineReader10-schema-v1.xml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" producer="ABBYY FineReader Engine 11" languages="" xsi:schemaLocation="http://www.abbyy.com/FineReader_xml/FineReader10-schema-v1.xml http://www.abbyy.com/FineReader_xml/FineReader10-schema-v1.xml">
   <page width="1296" height="2116" resolution="300" originalCoords="1">
-    <block blockType="Text" blockName="" l="373" t="169" r="1250" b="1584">
+    <block id="block_1_1" blockType="Text" blockName="" l="373" t="169" r="1250" b="1584">
       <region>
         <rect l="393" t="169" r="399" b="170"/>
         <rect l="393" t="170" r="472" b="171"/>
