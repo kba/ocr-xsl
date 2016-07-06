@@ -1,5 +1,5 @@
-# ocr-xslt
-XSLT functions to handle all common OCR formats
+# ocr-xsl
+XSLT functions to transform common OCR formats
 
 <!-- BEGIN-MARKDOWN-TOC -->
 <!-- END-MARKDOWN-TOC -->
@@ -10,6 +10,7 @@ XSLT functions to handle all common OCR formats
 
 * `hocr`
 * `alto`
+* `abbyy`
 
 ### Box coordinates
 

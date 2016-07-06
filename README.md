@@ -1,5 +1,5 @@
-# ocr-xslt
-XSLT functions to handle all common OCR formats
+# ocr-xsl
+XSLT functions to transform common OCR formats
 
 <!-- BEGIN-MARKDOWN-TOC -->
 * [Shared concepts](#shared-concepts)
@@ -9,6 +9,7 @@ XSLT functions to handle all common OCR formats
 	* [`ocr.bbox.xsl`](#ocrbboxxsl)
 		* [`ocr:bbox($format, $element, $coord)`](#ocrbboxformat-element-coord)
 		* [`ocr:hocr-bbox($element, $coord)`](#ocrhocr-bboxelement-coord)
+		* [`ocr:abbyy-bbox($slement, $coord)`](#ocrabbyy-bboxslement-coord)
 		* [`ocr:alto-bbox($slement, $coord)`](#ocralto-bboxslement-coord)
 	* [`ocr.image.xsl`](#ocrimagexsl)
 		* [`ocr:image($format, $element)`](#ocrimageformat-element)
@@ -22,6 +23,7 @@ XSLT functions to handle all common OCR formats
 
 * `hocr`
 * `alto`
+* `abbyy`
 
 ### Box coordinates
 
@@ -50,6 +52,12 @@ Retrieve the bounding box of an element
 
 
 #### `ocr:hocr-bbox($element, $coord)`
+
+* `$element`: The element to bound
+* `$coord`: A valid [box coordinate](#box-coordinates)
+
+
+#### `ocr:abbyy-bbox($slement, $coord)`
 
 * `$element`: The element to bound
 * `$coord`: A valid [box coordinate](#box-coordinates)
