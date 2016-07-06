@@ -29,13 +29,9 @@
         <xsl:param name="format" as="xs:string"/>
         <xsl:param name="elem" as="item()"/>
         <xsl:choose>
-            <xsl:when test="$format = 'hocr'">
-                <xsl:value-of select="ocr:hocr-image($elem)"/>
-            </xsl:when>
+            <xsl:when test="$format = 'hocr'"><xsl:value-of select="ocr:hocr-image($elem)"/></xsl:when>
             <!-- TODO -->
-            <xsl:when test="$format = 'alto'">
-                <xsl:value-of select="ocr:hocr-alto($elem)"/>
-            </xsl:when>
+            <!-- <xsl:when test="$format = 'alto'"><xsl:value-of select="ocr:hocr-alto($elem)"/></xsl:when> -->
         </xsl:choose>
     </xsl:function>
 
@@ -49,7 +45,7 @@
     <xsl:function name="ocr:hocr-image" as="xs:string">
         <xsl:param name="elem" as="item()"/>
         <!-- TODO -->
-        <xsl:value-of select="translate(tokenize($titleAtt, '\s+')[2], '&quot;;', '')"/>
+        <xsl:value-of select="translate(tokenize($elem/@title, '\s+')[2], '&quot;;', '')"/>
     </xsl:function>
 
 </xsl:stylesheet>

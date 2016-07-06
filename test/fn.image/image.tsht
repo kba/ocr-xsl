@@ -1,0 +1,12 @@
+#!/usr/bin/env tsht
+plan 2
+
+use shxml
+use colordiff
+
+equals_file "$(shxml xslt -p format hocr -p id 'page_1' image.xsl hocr.input.xml)" \
+    hocr.expected "fn.image hocr"
+# equals_file "$(shxml xslt -p format alto -p id 'block_1_1' image.xsl alto.input.xml)" \
+    # alto.expected "fn.bbox alto"
+# equals_file "$(shxml xslt -p format abbyy -p id 'block_1_1' image.xsl abbyy.input.xml)" \
+    # abbyy.expected "fn.bbox abbyy"
