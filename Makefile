@@ -27,7 +27,10 @@ test:
 #------------------------------------------------------------------------------
 # README
 #------------------------------------------------------------------------------
-docs: README.md
+docs: README.md OCR-Format-Comparison.md
+
+OCR-Format-Comparison.md: doc/OCR-Format-Comparison.md
+	$(SHINCLUDE) -p doc -c xml "$<" > "$@"
 
 README.md: doc/README.md $(wildcard xsl-functions/*)
 	$(SHINCLUDE) -c xml doc/README.md > "$@"

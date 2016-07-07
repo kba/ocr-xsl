@@ -4,6 +4,7 @@ XSLT functions to transform common OCR formats
 [![Build Status](https://travis-ci.org/kba/ocr-xsl.svg?branch=master)](https://travis-ci.org/kba/ocr-xsl)
 
 <!-- BEGIN-MARKDOWN-TOC -->
+* [Format Cheatsheet](#format-cheatsheet)
 * [Shared concepts](#shared-concepts)
 	* [OCR formats](#ocr-formats)
 	* [Box coordinates](#box-coordinates)
@@ -18,6 +19,12 @@ XSLT functions to transform common OCR formats
 		* [`ocr:hocr-image($element)`](#ocrhocr-imageelement)
 
 <!-- END-MARKDOWN-TOC -->
+
+## Format Cheatsheet
+
+Check out [OCR-Format-Comparison](OCR-Format-Comparison.md) for a
+concise comparison of hOCR, ALTO, and ABBYY.
+
 
 ## Shared concepts
 

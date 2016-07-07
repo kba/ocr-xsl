@@ -6,6 +6,12 @@ XSLT functions to transform common OCR formats
 <!-- BEGIN-MARKDOWN-TOC -->
 <!-- END-MARKDOWN-TOC -->
 
+## Format Cheatsheet
+
+Check out [OCR-Format-Comparison](OCR-Format-Comparison.md) for a
+concise comparison of hOCR, ALTO, and ABBYY.
+
+
 ## Shared concepts
 
 ### OCR formats
