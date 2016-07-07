@@ -45,7 +45,9 @@
     <xsl:function name="ocr:hocr-image" as="xs:string">
         <xsl:param name="elem" as="item()"/>
         <!-- TODO -->
-        <xsl:value-of select="translate(tokenize($elem/@title, '\s+')[2], '&quot;;', '')"/>
+        <xsl:variable name="preStrip" select="replace(normalize-space($elem/@title), '^.*image ', '')"/>
+        <xsl:variable name="postStrip" select="replace($preStrip, ';.*', '')"/>
+        <xsl:value-of select="translate($postStrip, '&quot;;', '')"/>
     </xsl:function>
 
 </xsl:stylesheet>
