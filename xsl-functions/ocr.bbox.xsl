@@ -108,9 +108,4 @@
         </xsl:choose>
     </xsl:function>
 
-    <xsl:function name="ocr:get_imgName" as="xs:string">
-        <xsl:param name="titleAtt" as="xs:string"/>
-        <xsl:value-of select="translate(tokenize($titleAtt, '\s+')[2], '&quot;;', '')"/>
-    </xsl:function>
-
 </xsl:stylesheet>
