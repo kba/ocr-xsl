@@ -1,8 +1,8 @@
-
-#block_1_1
-left:   373
-right:  1250
-top:    169
-bottom: 1584
-height: 1415
-width:  877
+<bbox>
+   <left>373</left>
+   <right>1250</right>
+   <top>169</top>
+   <bottom>1584</bottom>
+   <width>877</width>
+   <height>1415</height>
+</bbox>

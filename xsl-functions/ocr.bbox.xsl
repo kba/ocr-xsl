@@ -33,6 +33,11 @@
             <xsl:when test="$format = 'hocr'"><xsl:value-of select="ocr:hocr-bbox($elem, $coord)"/></xsl:when>
             <xsl:when test="$format = 'alto'"><xsl:value-of select="ocr:alto-bbox($elem, $coord)"/></xsl:when>
             <xsl:when test="$format = 'abbyy'"><xsl:value-of select="ocr:abbyy-bbox($elem, $coord)"/></xsl:when>
+            <xsl:otherwise>
+              <xsl:message terminate="yes">
+                Invalid format: '<xsl:value-of select="$format"/>
+              </xsl:message>
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
 
@@ -62,6 +67,11 @@
             <xsl:when test="$coord = 'bottom'"><xsl:value-of select="$positions[4]"                /></xsl:when>
             <xsl:when test="$coord = 'width'" ><xsl:value-of select="$positions[3] - $positions[1]"/></xsl:when>
             <xsl:when test="$coord = 'height'"><xsl:value-of select="$positions[4] - $positions[2]"/></xsl:when>
+            <xsl:otherwise>
+              <xsl:message terminate="yes">
+                Invalid box coordinate: '<xsl:value-of select="$coord"/>
+              </xsl:message>
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
 
@@ -83,6 +93,11 @@
             <xsl:when test="$coord = 'bottom'"><xsl:value-of select="$elem/@b"            /></xsl:when>
             <xsl:when test="$coord = 'width'" ><xsl:value-of select="$elem/@r - $elem/@l" /></xsl:when>
             <xsl:when test="$coord = 'height'"><xsl:value-of select="$elem/@b - $elem/@t" /></xsl:when>
+            <xsl:otherwise>
+              <xsl:message terminate="yes">
+                Invalid box coordinate: '<xsl:value-of select="$coord"/>
+              </xsl:message>
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
 
@@ -105,6 +120,11 @@
             <xsl:when test="$coord = 'bottom'"><xsl:value-of select="$elem/@HEIGHT + $elem/@VPOS" /></xsl:when>
             <xsl:when test="$coord = 'width'" ><xsl:value-of select="$elem/@WIDTH"                /></xsl:when>
             <xsl:when test="$coord = 'height'"><xsl:value-of select="$elem/@HEIGHT"               /></xsl:when>
+            <xsl:otherwise>
+              <xsl:message terminate="yes">
+                Invalid box coordinate: '<xsl:value-of select="$coord"/>
+              </xsl:message>
+            </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
 
